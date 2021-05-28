@@ -1,6 +1,6 @@
 # PainLang, an esoteric programming language  
 A programming language whose commands are based off of the words "ow?", "OW!", and "AAAAAAAAAAAAAAAAA"  
-Loosely based off of Brainfuck, file extension is `.pain`.
+Loosely based off of Brainf***, file extension is `.pain`.
 # Standard  
 Given an index `i`, a negation bit `neg`, and a sixteen cell tape `t`, with each cell being one byte:  
 `o` sets `i` to `(i + 1) % 8`  
