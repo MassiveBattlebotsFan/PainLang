@@ -3,7 +3,7 @@ if len(sys.argv) < 2:
     exit("Syntax: PLcompiler.py <program.ow>")
 #tape = [0,0,0,0,0,0,0,0]
 #index = 0
-cmds = {"o" : "index = (0 if index + 1 > 8 else index + 1); ", "w" : "tape[index] = (0 if tape[index] + 1 > 0b11111111 else tape[index] + 1); ", "!" : "sys.stdout.write(chr(tape[index])); ", "?" : "tape[index] = ord(sys.stdin.read(1)); ", "O" : "\nif tape[index] != 0:\n    while True: \n        ", "W" : "\n        if tape[index] == 0: break; ", "A" : "index = 0; ", "a" : "tape[index] = 0; "}
+cmds = {"o" : "index = (0 if index + 1 > 8 else index + 1); ", "w" : "tape[index] = (0 if tape[index] + 1 > 0b11111111 else tape[index] + 1); ", "!" : "sys.stdout.write(chr(tape[index])); ", "?" : "tape[index] = ord(sys.stdin.read(1)); ", "O" : "\nif tape[index] != 0:\n    while True: \n        ", "W" : "\n        if tape[index] == 0: break; \n", "A" : "index = 0; ", "a" : "tape[index] = 0; "}
 prog = ""
 with open(sys.argv[1], "r") as file:
     data = file.read()
