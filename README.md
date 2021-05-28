@@ -9,6 +9,7 @@ Given an index `i`, a negation bit `neg`, and a sixteen cell tape `t`, with each
 `?` reads one character from the console into `t[i]`  
 `O` jumps to the matching `W` character if `t[i]` is zero  
 `W` jumps to the matching `O` character if `t[i]` is nonzero  
-`a` sets `neg` to -1  
-`A` sets `neg` to 1  
+`a` sets `neg` to `neg * -1`
+`A` is a comment
+If debug mode is enabled with the `-d` flag, `#` prints debug info 
 Please don't nest loops
