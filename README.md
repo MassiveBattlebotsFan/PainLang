@@ -1,5 +1,5 @@
 # PainLang, an esoteric programming language  
-Loosely based off of Brainfuck
+Loosely based off of Brainfuck, file extension is .ow.
 # Standard  
 Given an index `i` and an eight cell tape `t`, with each cell being one byte:  
 `o` sets `i` to `(i + 1) % 8`  
