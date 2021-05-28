@@ -11,3 +11,4 @@ Given an index `i` and an eight cell tape `t`, with each cell being one byte:
 `W` jumps to the matching `O` character if `t[i]` is nonzero  
 `a` sets `t[i]` to zero  
 `A` sets `i` to zero
+Please don't nest loops
