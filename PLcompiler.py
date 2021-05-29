@@ -9,7 +9,7 @@ if "-d" in sys.argv[1:]: dbg=True
 try: 
     if "-l" in sys.argv[1:]: lnt=int(sys.argv[sys.argv.index("-l")+1])
 except:exit("-l option requires a length integer")
-cmds = {"o" : f"index = ((0 if index + 1 > {(str(15) if lnt==None else str(lnt-1))} else index + 1) if neg == 1 else ({(str(15) if lnt==None else str(lnt-1))} if index - 1 < 0 else index - 1)); ", "w" : "tape[index] = ((0 if tape[index] + 1 > 0b11111111 else tape[index] + 1) if neg == 1 else (0b11111111 if tape[index] - 1 < 0b00000000 else tape[index] - 1)); ", "!" : "sys.stdout.write(chr(tape[index])); ", "?" : "tape[index] = ord(sys.stdin.read(1)); ", "O" : "\nif tape[index] != 0:\n    while True: \n        ", "W" : "\n        if tape[index] == 0: break; \n", "a" : "neg *= -1; "}
+cmds = {"o" : "if index+1>tape:len()then index=0 else index=index+1 end; ", "w" : "tape[index] = ((0 if tape[index] + 1 > 0b11111111 else tape[index] + 1) if neg == 1 else (0b11111111 if tape[index] - 1 < 0b00000000 else tape[index] - 1)); ", "!" : "sys.stdout.write(chr(tape[index])); ", "?" : "tape[index] = ord(sys.stdin.read(1)); ", "O" : "\nif tape[index] != 0:\n    while True: \n        ", "W" : "\n        if tape[index] == 0: break; \n", "a" : "neg *= -1; "}
 with open(sys.argv[-1], "r") as file:
     lines = file.readlines()
     for data in lines:

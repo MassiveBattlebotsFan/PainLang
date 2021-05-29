@@ -1,18 +1,18 @@
-import sys
+import sys,os
 
 dbg = False
 if "-d" in sys.argv[1:]: dbg=True;print("Debug mode active")
 tape = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 index = 0
 neg = 1
-cmds = {"o" : f"index = ((0 if index + 1 > 15 else index + 1) if neg == 1 else (15 if index - 1 < 0 else index - 1)); ", "w" : "tape[index] = ((0 if tape[index] + 1 > 0b11111111 else tape[index] + 1) if neg == 1 else (0b11111111 if tape[index] - 1 < 0b00000000 else tape[index] - 1)); ", "!" : "sys.stdout.write(chr(tape[index])); ", "?" : "tape[index] = ord(sys.stdin.read(1)); ", "O" : "\nif tape[index] != 0:\n    while True: \n        ", "W" : "\n        if tape[index] == 0: break; \n", "a" : "neg *= -1; "}
+cmds = {"o" : "index=index+(1*neg); if index<0 then index=tape:len() elseif index>tape:len() then index=0 end; " , "w" : "tape[index]=tape[index]+(1*neg); if tape[index]<0 then tape[index]=255 elseif tape[index]>255 then tape[index]=0 end; ", "!" : "io.write(string.byte(tape[index])); ", "?" : "tape[index] = string.char(io.read(1)); ", "O" : "while tape[index]>0 do", "W" : "end", "a" : "neg=neg*-1; "}
 def interpret(data):
     prog = ""
     for char in data:
         if char=="A":break
-        if dbg and char=="#":prog+="sys.stdout.write(str(tape)+\",\"+str(index)+\",\"+str(neg)+\"\\n\"); "
+        if dbg and char=="#":prog+="io.write(tape[0,tape:len()]..\",\"..index..\",\"..neg..\"\\n\"); "
         if char in cmds.keys():prog += cmds.get(char)
-    return prog
+    return "tape={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};index=0;neg=1;"+prog
 
 while True:
     print("\nReady")
@@ -24,4 +24,4 @@ while True:
         index = 0
         neg = 1
         print("State reset")
-    exec(interpret(ipt))
+    os.system(f"lua54.exe -W -i -e \"{interpret(ipt)}\"")
