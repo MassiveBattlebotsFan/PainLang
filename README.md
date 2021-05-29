@@ -3,7 +3,7 @@ A programming language whose commands are based off of the words "ow?", "OW!", a
 Loosely based off of Brainf***, file extension is `.pain`.
 # Standard  
 Given an index `i`, a negation bit `neg`, and a sixteen cell tape `t`, with each cell being one byte:  
-`o` sets `i` to `(i + 1) len(t)`   
+`o` sets `i` to `(i + 1) % len(t)`
 `w` increments `t[i]`, and wraps to zero upon exceeding one byte  
 `!` prints `t[i]`  
 `?` reads one character from the console into `t[i]`  
